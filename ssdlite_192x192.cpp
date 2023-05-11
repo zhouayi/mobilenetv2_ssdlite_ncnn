@@ -172,7 +172,7 @@ static void draw_objects(const cv::Mat& bgr, const std::vector<Object>& objects)
 
     // cv::imshow("image", image);
     // cv::waitKey(0);
-    cv::imwrite("result.jpg", image);
+    cv::imwrite("result_192x192.jpg", image);
 }
 
 int main(int argc, char** argv)
