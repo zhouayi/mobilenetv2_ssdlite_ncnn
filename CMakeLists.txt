@@ -43,34 +43,34 @@ endif()
 
 if(${BUILD_SYSTEM} STREQUAL "aarch64-linux-gnu")
     include_directories(
-        /media/home/zql/3rdparty/ncnn/build-aarch64-linux-gnu/install/include/ncnn
-        /media/home/zql/3rdparty/ncnn/build-aarch64-linux-gnu/install/include
-        /media/home/zql/3rdparty/ncnn/src
-        /media/home/zql/3rdparty/opencv/build-aarch64-linux-gnu/install/include/opencv4
-        /media/home/zql/3rdparty/opencv/build-aarch64-linux-gnu/install/include/opencv4/opencv2
-        /media/home/zql/3rdparty/opencv/build-aarch64-linux-gnu/install/include
+        /ncnn/build-aarch64-linux-gnu/install/include/ncnn
+        /ncnn/build-aarch64-linux-gnu/install/include
+        /ncnn/src
+        /opencv-4.7.0/build-aarch64-linux-gnu/install/include/opencv4
+        /opencv-4.7.0/build-aarch64-linux-gnu/install/include/opencv4/opencv2
+        /opencv-4.7.0/build-aarch64-linux-gnu/install/include
     )
 else()
     include_directories(
-        /media/home/zql/3rdparty/ncnn/build-host-gcc-linux/install/include/ncnn
-        /media/home/zql/3rdparty/ncnn/build-host-gcc-linux/install/include
-        /media/home/zql/3rdparty/ncnn/src
-        /media/home/zql/3rdparty/opencv/build-host-gcc-linux/install/include/opencv4
-        /media/home/zql/3rdparty/opencv/build-host-gcc-linux/install/include/opencv4/opencv2
-        /media/home/zql/3rdparty/opencv/build-host-gcc-linux/install/include
+        /ncnn/build-host-gcc-linux/install/include/ncnn
+        /ncnn/build-host-gcc-linux/install/include
+        /ncnn/src
+        /opencv4.7.0/build-host-gcc-linux/install/include/opencv4
+        /opencv4.7.0/build-host-gcc-linux/install/include/opencv4/opencv2
+        /opencv4.7.0/build-host-gcc-linux/install/include
     )
 endif()
 
 
 if(${BUILD_SYSTEM} STREQUAL "aarch64-linux-gnu")
     link_directories(
-        /media/home/zql/3rdparty/ncnn/build-aarch64-linux-gnu/install/lib
-        /media/home/zql/3rdparty/opencv/build-aarch64-linux-gnu/install/lib
+        /ncnn/build-aarch64-linux-gnu/install/lib
+        /opencv-4.7.0/build-aarch64-linux-gnu/install/lib
     )
 else()
     link_directories(
-        /media/home/zql/3rdparty/ncnn/build-host-gcc-linux/install/lib
-        /media/home/zql/3rdparty/opencv/build-host-gcc-linux/install/lib
+        /ncnn/build-host-gcc-linux/install/lib
+        /opencv4.7.0/build-host-gcc-linux/install/lib
     )
 endif()
 
@@ -86,3 +86,5 @@ link_libraries(
 
 add_executable(ssdlite mobilenetv2ssdlite.cpp)
 add_executable(ssdlite_192x192 ssdlite_192x192.cpp)
+target_link_libraries(ssdlite -lpthread -lm -fopenmp)
+target_link_libraries(ssdlite_192x192 -lpthread -lm -fopenmp)
